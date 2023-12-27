@@ -35,7 +35,7 @@ function add() {
         alert('Please fill all fields');
         webNameInput.classList.add('is-invalid');
         webUrlInput.classList.add('is-invalid');
-    } else if (url === '' || regExp.test(url) === false) {
+    } else if (regExp.test(url) === false) {
         alert('Please add valid url');
         webUrlInput.classList.add('is-invalid');
     } else {
@@ -71,7 +71,7 @@ function loadData() {
                         </button>
                     </a>
 
-                    <button id="delBtn" onclick="del()" class="btn btn-danger custom-tooltip" data-bs-placement="top" title="Delete">
+                    <button id="delBtn" onclick="del(${i})" class="btn btn-danger custom-tooltip" data-bs-placement="top" title="Delete">
                         <i class="fa-regular fa-trash-can"></i>
                     </button>
                 </td>
@@ -83,7 +83,6 @@ function loadData() {
 
 // Delete button
 function del(e) {
-    e = document.querySelectorAll('#indexNum');
     bookmarks.splice(e, 1);
     localStorage.setItem('w', JSON.stringify(bookmarks));
     loadData();
